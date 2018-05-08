@@ -28,7 +28,7 @@
         <git-commit-id-plugin.version>2.2.1</git-commit-id-plugin.version>
         <yjlib.base.version>1.0.1-SNAPSHOT</yjlib.base.version>
         <yjlib.core.version>1.0.1-SNAPSHOT</yjlib.core.version>
-
+        <org.springframework.boot.version>1.5.10.RELEASE</org.springframework.boot.version>
         <io.springfox.version>2.4.0</io.springfox.version>
         <!--start api generate -->
         <swagger2markup.version>1.2.0</swagger2markup.version>
@@ -65,6 +65,23 @@
 
     <build>
         <plugins>
+
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${org.springframework.boot.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <!-- do not enable it, this will creats a non standard jar and cause autoconfig to fail -->
+                    <executable>false</executable>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
